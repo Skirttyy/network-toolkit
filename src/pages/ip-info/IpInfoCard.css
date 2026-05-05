@@ -1,0 +1,195 @@
+/* ============================================================
+   NOC NETWORK TOOLKIT — IP Info Card
+   Theme: Minimalist Light / Blue & Indigo
+   ============================================================ */
+
+/* ── Outer wrapper: left details + right map ── */
+.ip-info-card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    animation: step-in 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ══════════════════════════════════════════════════════════
+   LEFT — DETAILS
+══════════════════════════════════════════════════════════ */
+
+.ip-info-results {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface, #ffffff);
+    border: 1.5px solid var(--border, #e2e6f3);
+    padding: 15px;
+    border-radius: var(--radius-lg, 16px);
+}
+
+/* ── Section cards ── */
+.main-region-details-container,
+.second-region-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 18px;
+    border-bottom: 2px solid var(--border, #e2e6f3);
+}
+
+.isp-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 18px;
+}
+
+/* ── Info rows ── */
+.country-info-container,
+.country-code-info-container,
+.region-info-container,
+.city-info-container,
+.zip-info-container,
+.timezone-info-container,
+.isp-info-container,
+.org-info-container,
+.as-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+}
+
+/* Remove border from last row in each section */
+.main-region-details-container > div:last-child,
+.second-region-details-container > div:last-child,
+.isp-details-container > div:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Remove top padding from first row */
+.main-region-details-container > div:first-child,
+.second-region-details-container > div:first-child,
+.isp-details-container > div:first-child {
+    padding-top: 0;
+}
+
+/* Key label */
+.country-info-container p:first-child,
+.country-code-info-container p:first-child,
+.region-info-container p:first-child,
+.city-info-container p:first-child,
+.zip-info-container p:first-child,
+.timezone-info-container p:first-child,
+.isp-info-container p:first-child,
+.org-info-container p:first-child,
+.as-info-container p:first-child {
+    font-family: var(--font-ui, 'DM Sans', sans-serif);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted, #a0a8c0);
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Value */
+.country-info-container p:last-child,
+.country-code-info-container p:last-child,
+.region-info-container p:last-child,
+.city-info-container p:last-child,
+.zip-info-container p:last-child,
+.timezone-info-container p:last-child {
+    font-family: var(--font-ui, 'DM Sans', sans-serif);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary, #1e2340);
+    text-align: right;
+    word-break: break-word;
+}
+
+/* ISP / Org / AS — accent badge */
+.isp-info-container p:last-child,
+.org-info-container p:last-child,
+.as-info-container p:last-child {
+    font-family: var(--font-ui, 'DM Sans', sans-serif);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent, #4f6ef7);
+    background: var(--accent-dim, rgba(79, 110, 247, 0.08));
+    padding: 3px 10px;
+    border-radius: var(--radius-full, 999px);
+    text-align: right;
+    word-break: break-word;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RIGHT — MAP
+══════════════════════════════════════════════════════════ */
+
+.ip-info-map-results {
+    border-radius: var(--radius-lg, 16px);
+    overflow: hidden;
+    border: 1.5px solid var(--border, #e2e6f3);
+    min-height: 300px;
+}
+
+.ip-info-map-results .map-container {
+    height: 100%;
+    min-height: 300px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ANIMATION
+══════════════════════════════════════════════════════════ */
+
+@keyframes step-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .ip-info-card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .ip-info-map-results {
+        min-height: 220px;
+    }
+
+    .ip-info-map-results .map-container {
+        min-height: 220px;
+    }
+
+    .country-info-container,
+    .country-code-info-container,
+    .region-info-container,
+    .city-info-container,
+    .zip-info-container,
+    .timezone-info-container,
+    .isp-info-container,
+    .org-info-container,
+    .as-info-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .country-info-container p:last-child,
+    .country-code-info-container p:last-child,
+    .region-info-container p:last-child,
+    .city-info-container p:last-child,
+    .zip-info-container p:last-child,
+    .timezone-info-container p:last-child,
+    .isp-info-container p:last-child,
+    .org-info-container p:last-child,
+    .as-info-container p:last-child {
+        text-align: left;
+    }
+}

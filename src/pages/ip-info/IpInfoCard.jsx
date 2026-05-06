@@ -8,6 +8,10 @@ export default function IpInfoCard ({data}) {
             <div className="ip-info-results">
             <div className="main-region-details-container">
                 <div className="country-info-container">
+                    <p>Ip Address:</p>
+                    <p>{data.query}</p>
+                </div>
+                <div className="country-info-container">
                     <p>Country:</p>
                     <p>{data.country}</p>
                 </div>
@@ -50,7 +54,7 @@ export default function IpInfoCard ({data}) {
             </div>
             </div>
             <div className="ip-info-map-results">
-                <Map lat={data.lat} lon={data.lon} city={data.city}/>
+                {data.lat && <Map lat={data.lat} lon={data.lon} city={data.city}/>}
             </div>
         </div>
     )

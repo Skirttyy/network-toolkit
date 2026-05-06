@@ -1,0 +1,257 @@
+/* ============================================================
+   NOC NETWORK TOOLKIT — DNS Lookup Card
+   Theme: Minimalist Light / Blue & Indigo
+   ============================================================ */
+
+.dns-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg-surface, #ffffff);
+    border: 1.5px solid var(--border, #e2e6f3);
+    border-radius: var(--radius-lg, 16px);
+    padding: 20px 24px;
+    font-family: var(--font-ui, 'DM Sans', sans-serif);
+    box-shadow: var(--shadow-sm, 0 1px 4px rgba(30, 35, 64, 0.06));
+    animation: step-in 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow var(--transition, 180ms ease),
+                border-color var(--transition, 180ms ease);
+}
+
+.dns-card-container:hover {
+    border-color: var(--border-strong, #c7cee8);
+    box-shadow: var(--shadow-md, 0 4px 16px rgba(30, 35, 64, 0.08));
+}
+
+/* ══════════════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════════════ */
+
+.dns-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.dns-card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dns-card-domain {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary, #1e2340);
+}
+
+.dns-card-type-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--indigo, #6366f1);
+    background: var(--indigo-dim, rgba(99, 102, 241, 0.1));
+    padding: 2px 10px;
+    border-radius: var(--radius-full, 999px);
+    letter-spacing: 0.06em;
+}
+
+.dns-card-consensus {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: var(--radius-full, 999px);
+}
+
+.consensus--yes {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.consensus--no {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+/* ══════════════════════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════════════════════ */
+
+.dns-card-divider {
+    height: 1px;
+    background: var(--border, #e2e6f3);
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESOLVER BLOCK
+══════════════════════════════════════════════════════════ */
+
+.dns-card-resolver {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--bg-subtle, #eef1fb);
+    border-radius: var(--radius-md, 12px);
+    padding: 12px 16px;
+}
+
+.dns-card-resolver-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dns-resolver-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary, #1e2340);
+    text-transform: capitalize;
+}
+
+.dns-resolver-ip {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-secondary, #6b7280);
+    font-variant-numeric: tabular-nums;
+}
+
+.dns-resolver-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent, #4f6ef7);
+    background: var(--accent-dim, rgba(79, 110, 247, 0.08));
+    padding: 1px 8px;
+    border-radius: var(--radius-full, 999px);
+    margin-left: auto;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RECORDS
+══════════════════════════════════════════════════════════ */
+
+.dns-card-records {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dns-record-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 0;
+    border-top: 1px solid var(--border, #e2e6f3);
+}
+
+.dns-record-type {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--indigo, #6366f1);
+    background: var(--indigo-dim, rgba(99, 102, 241, 0.1));
+    padding: 2px 8px;
+    border-radius: var(--radius-full, 999px);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+}
+
+.dns-record-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary, #1e2340);
+    font-variant-numeric: tabular-nums;
+    flex: 1;
+    min-width: 0;
+    word-break: break-all;
+}
+
+.dns-record-ttl {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted, #a0a8c0);
+    flex-shrink: 0;
+}
+
+.dns-record-geo {
+    font-size: 11px;
+    font-weight: 500;
+    color: #166534;
+    background: #dcfce7;
+    padding: 2px 8px;
+    border-radius: var(--radius-full, 999px);
+    flex-shrink: 0;
+}
+
+.dns-record-asn {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+    background: var(--bg-surface, #ffffff);
+    border: 1px solid var(--border, #e2e6f3);
+    padding: 2px 8px;
+    border-radius: var(--radius-full, 999px);
+    flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════════ */
+
+.dns-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dns-card-timestamp {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted, #a0a8c0);
+}
+
+.dns-card-consensus-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.dns-consensus-chip {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent, #4f6ef7);
+    background: var(--accent-dim, rgba(79, 110, 247, 0.08));
+    padding: 2px 10px;
+    border-radius: var(--radius-full, 999px);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ANIMATION
+══════════════════════════════════════════════════════════ */
+
+@keyframes step-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+    .dns-card-container {
+        padding: 16px;
+    }
+
+    .dns-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dns-record-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

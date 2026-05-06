@@ -1,48 +1,46 @@
+import "./DnsLookup.css"
 import { useEffect, useRef, useState } from "react"
 import { useFetch } from "../../hooks/useFetch"
-import "./IpInfo.css"
-import IpInfoCard from "./IpInfoCard"
 import { useNavigate, useParams } from "react-router"
+import DnsLookupCard from "./DnsLookupCard"
 
-export default function IpInfo () {
+export default function DnsLookup () {
 
-    const { ip } = useParams()
+    const { dns } = useParams()
     const navigate = useNavigate()
 
-    const [input, setInput] = useState(ip || "")
-    const { data, error, loading } = useFetch("http://ip-api.com/json/" + input, true)
+    const [input, setInput] = useState(dns || "google.com")
+    const { data, error, loading } = useFetch("https://corsproxy.io/?url=https://dnsx.dev/dns/" + input, true)
     const [inputError, setInputError] = useState(null)
     const inputRef = useRef(null)
 
     useEffect(() => {
         if (!checkType(input) && input !== "") {
-            setInputError("You need to specify a valid IPv4, IPv6 address or a valid domain/dns!")
+            setInputError("You need to specify a valid domain/dns!")
         } else {
             inputRef.current.value = input
         }
+        console.log(error)
     }, [input])
 
     function checkType (input) {
-        const ipRegex = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)$/
         const domainRegex = /^(?!-)(?:[a-zA-Z0-9-]{1,63}\.)+[a-zA-Z]{2,}$/
-        const ipv6Regex = /^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|(([0-9a-fA-F]{1,4}:){1,7}:)|(([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4})|(([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2})|(([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3})|(([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4})|(([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5})|([0-9a-fA-F]{1,4}:)((:[0-9a-fA-F]{1,4}){1,6})|(:((:[0-9a-fA-F]{1,4}){1,7}|:)))$/
-
-        return ipRegex.test(input) || domainRegex.test(input) || ipv6Regex.test(input)
+        return domainRegex.test(input)
     }
 
     function handleInput () {
         if (checkType(inputRef.current.value)) {
             setInputError(null)
             setInput(inputRef.current.value)
-            navigate("/ip-info/" + inputRef.current.value)
+            navigate("/dns-lookup/" + inputRef.current.value)
         } else {
-            setInputError("You need to specify a valid IPv4, IPv6 address or a valid domain/dns!")
+            setInputError("You need to specify a valid domain/dns!")
         }
     }
 
     return (
         <div className="ip-info-container">
-            <h1 className="ip-info-container-info">Type there the ip address... *</h1>
+            <h1 className="ip-info-container-info">Type there the domain/dns... *</h1>
             <div className="ip-info-container-input">
                 <div className="input-main">
                     <input ref={inputRef} type="text"/>
@@ -55,7 +53,7 @@ export default function IpInfo () {
                 {inputError && <div className="input-error-container">{inputError}</div>}
                 {error && <div className="fetch-error-container">{String(error)}</div>}
                 {loading && <div className="fetch-loading-container">Loading...</div>}
-                {(data && !inputError && !error && !loading) && <IpInfoCard data={data}/>}
+                {(data && !inputError && !error && !loading) && <DnsLookupCard data={data}/>}
             </div>
         </div>
     )

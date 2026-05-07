@@ -11,7 +11,7 @@ export default function PortChecker () {
     const [inputIp, setInputIp] = useState("example.com")
     const [inputPort, setInputPort] = useState(80)
     const [inputErrors, setInputErrors] = useState([])
-    const { data, error, loading} = useFetch("https://corsproxy.io/?url=https://portchecker.io/api/" + inputIp + "/" + inputPort, false)
+    const { data, error, loading} = useFetch("https://api.allorigins.win/raw?url=https://portchecker.io/api/" + inputIp + "/" + inputPort, false)
 
     const ipRef = useRef(null)
     const portRef = useRef(null)

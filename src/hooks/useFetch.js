@@ -1,4 +1,3 @@
-import js from "@eslint/js"
 import { useEffect, useState } from "react"
 
 export function useFetch (url, isJson) {

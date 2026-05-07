@@ -10,7 +10,7 @@ export default function DnsLookup () {
     const navigate = useNavigate()
 
     const [input, setInput] = useState(dns || "google.com")
-    const { data, error, loading } = useFetch("https://corsproxy.io/?url=https://dnsx.dev/dns/" + input, true)
+    const { data, error, loading } = useFetch("https://api.allorigins.win/raw?url=https://dnsx.dev/dns/" + input, true)
     const [inputError, setInputError] = useState(null)
     const inputRef = useRef(null)
 
